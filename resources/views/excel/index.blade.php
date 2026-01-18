@@ -3,17 +3,9 @@
 @section('content')
     <div class="max-w-7xl mx-auto p-6">
 
-        <!-- عنوان الصفحة -->
+
         <h1 class="text-2xl font-bold mb-6 text-gray-800">Excel Import & export Dashboard</h1>
-
-        <!-- رسالة النجاح -->
-        @if(session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <!-- الفورم لرفع الملف -->
+        
         <div class="flex bg-white shadow rounded-lg p-6 mb-8 align-center justify-between">
 
             <div class="">
@@ -28,14 +20,17 @@
                 </button>
             </form>
         </div>
-        <div class="">
+        <div class="flex align-center justify-center gap-2">
             <a href="{{ route('excel.export') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition">
                 Export Excel
             </a>
+            <a href="{{ route('excel.exportPdfMpdf') }}" class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded transition">
+                Export PDF
+            </a>
+
         </div>
             </div>
 
-        <!-- جدول عرض البيانات -->
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border border-gray-200 rounded-lg">
                 <thead class="bg-gray-100 text-gray-700">

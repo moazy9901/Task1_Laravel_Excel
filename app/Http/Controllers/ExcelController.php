@@ -7,14 +7,17 @@ use App\Models\Admin;
 use App\Models\Client;
 use App\Models\Owner;
 use App\Services\ExcelImportService;
+use App\Services\PdfExportService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Mpdf\Mpdf;
 
 class ExcelController extends Controller
 {
     public function index()
     {
-       
+
         $records = collect()
             ->merge(Client::all())
             ->merge(Owner::all())
@@ -36,5 +39,11 @@ class ExcelController extends Controller
     {
         $fileName = 'all_data_' . time() . '.xlsx';
         return Excel::download(new MultiSheetExport(), $fileName);
+    }
+
+    public function exportPdfMpdf(PdfExportService $service)
+    {
+        $service->export();
+        return back()->with('success', 'data Exported Successfully');
     }
 }
