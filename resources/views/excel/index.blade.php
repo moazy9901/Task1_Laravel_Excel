@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto p-6">
 
         <!-- عنوان الصفحة -->
-        <h1 class="text-2xl font-bold mb-6 text-gray-800">Excel Import Dashboard</h1>
+        <h1 class="text-2xl font-bold mb-6 text-gray-800">Excel Import & export Dashboard</h1>
 
         <!-- رسالة النجاح -->
         @if(session('success'))
@@ -14,9 +14,11 @@
         @endif
 
         <!-- الفورم لرفع الملف -->
-        <div class="bg-white shadow rounded-lg p-6 mb-8">
-            <form method="POST" action="{{ route('excel.import') }}" enctype="multipart/form-data"
-                class="flex flex-col md:flex-row items-center gap-4">
+        <div class="flex bg-white shadow rounded-lg p-6 mb-8 align-center justify-between">
+
+            <div class="">
+                <form method="POST" action="{{ route('excel.import') }}" enctype="multipart/form-data"
+                class="flex flex-col md:flex-row items-center gap-x-4">
                 @csrf
                 <input type="file" name="file" required
                     class="border rounded px-4 py-2 w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -26,6 +28,12 @@
                 </button>
             </form>
         </div>
+        <div class="">
+            <a href="{{ route('excel.export') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition">
+                Export Excel
+            </a>
+        </div>
+            </div>
 
         <!-- جدول عرض البيانات -->
         <div class="overflow-x-auto">

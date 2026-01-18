@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MultiSheetExport;
 use App\Models\Admin;
 use App\Models\Client;
 use App\Models\Owner;
 use App\Services\ExcelImportService;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelController extends Controller
 {
@@ -28,5 +30,11 @@ class ExcelController extends Controller
         $service->import($request->file('file'));
 
         return back()->with('success', 'Excel Imported Successfully');
+    }
+
+    public function export()
+    {
+        $fileName = 'all_data_' . time() . '.xlsx';
+        return Excel::download(new MultiSheetExport(), $fileName);
     }
 }
