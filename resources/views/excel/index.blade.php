@@ -39,18 +39,22 @@
                         <th class="text-left px-4 py-2 border-b">Name</th>
                         <th class="text-left px-4 py-2 border-b">Email</th>
                         <th class="text-left px-4 py-2 border-b">Phone</th>
-                        <th class="text-left px-4 py-2 border-b">Address / Age</th>
+                        <th class="text-left px-4 py-2 border-b"> Age</th>
+                        <th class="text-left px-4 py-2 border-b">Address</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
                     @forelse($records as $index => $record)
                         <tr class="{{ $index % 2 == 0 ? 'bg-gray-50' : '' }}">
                             <td class="px-4 py-2 border-b">{{ $index + 1 }}</td>
-                            <td class="px-4 py-2 border-b">{{ $record->name }}</td>
-                            <td class="px-4 py-2 border-b">{{ $record->email }}</td>
-                            <td class="px-4 py-2 border-b">{{ $record->phone }}</td>
+                            <td class="px-4 py-2 border-b">{{ $record->name ?? '-'}}</td>
+                            <td class="px-4 py-2 border-b">{{ $record->email ?? '-'}}</td>
+                            <td class="px-4 py-2 border-b">{{ $record->phone ?? '-'}}</td>
                             <td class="px-4 py-2 border-b">
-                                {{ $record->address ?? $record->age ?? '-' }}
+                                {{ $record->age ?? '-' }}
+                            </td>
+                            <td class="px-4 py-2 border-b">
+                                {{ $record->address ?? '-' }}
                             </td>
                         </tr>
                     @empty
