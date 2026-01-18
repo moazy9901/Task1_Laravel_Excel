@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ExcelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route("clients.index");
+    return redirect()->route("excel.index");
 });
 
-Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
-Route::post('/clients/import', [ClientController::class, 'import'])->name('clients.import');
+Route::get('/excel', [ExcelController::class, 'index'])->name('excel.index');
+Route::post('/excel/import', [ExcelController::class, 'import'])->name('excel.import');

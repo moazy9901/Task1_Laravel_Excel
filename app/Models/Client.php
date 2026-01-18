@@ -11,7 +11,8 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = [
-        "data" ,
-        "sheet_name"
+        "name",
+        "email",
+        "phone",
     ];
 }
